@@ -21,7 +21,6 @@ const main = async () => {
   txn = await gameContract.attackBoss();
   resp = await txn.wait();
   
-  console.log(`[*] Attacked Boss! RESP: ${resp}`);
 }
 
 const runMain = async () => {

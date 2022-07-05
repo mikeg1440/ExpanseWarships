@@ -136,7 +136,8 @@ contract ExpanseWarShips is ERC721 {
     uint256 nftTokenIdOfPlayer = nftHolders[msg.sender];
     ShipAttributes storage playerShip = nftHolderAttributes[nftTokenIdOfPlayer];
     
-    console.log("[+] The %s is attacking the %s, with HP: %s and AD: %s", playerShip.name, alienBoss.name, playerShip.hp, playerShip.attackDamage);
+    console.log("[+] The %s is attacking the %s", playerShip.name, alienBoss.name);
+    console.log("[+] %s HP: %s and AD: %s", playerShip.name, playerShip.hp, playerShip.attackDamage);
     console.log("[+] The %s has HP: %s and AD: %s", alienBoss.name, alienBoss.hp, alienBoss.attackDamage);
 
     require(
@@ -163,8 +164,9 @@ contract ExpanseWarShips is ERC721 {
       playerShip.hp -= alienBoss.attackDamage;
     }
 
-    console.log("[+] The %s attacked the %s.  %s's HP: %s", playerShip.name, alienBoss.name, alienBoss.name, alienBoss.hp);
-    console.log("[+] The %s attacked the %s.  %s's HP: %s", alienBoss.name, playerShip.name, playerShip.name, playerShip.hp);
+    console.log("[+] The %s attacked the %s", playerShip.name, alienBoss.name);
+    console.log("[+] %s HP: %s and AD: %s", playerShip.name, playerShip.hp, playerShip.attackDamage);
+    console.log("[+] %s's HP: %s, AD: %s", alienBoss.name, alienBoss.hp, alienBoss.attackDamage);
 
   }
   
