@@ -44,21 +44,25 @@ contract ExpanseWarShips is ERC721 {
     string[] memory shipNames,
     string[] memory shipImageURIs,
     uint[] memory shipHp,
-    uint[] memory shipAttackDmg
+    uint[] memory shipAttackDmg,
+    string memory bossName,
+    string memory bossImageURI,
+    uint bossHp,
+    uint bossAttackDmg
   )
     ERC721("Warships", "WAR")
   {
     console.log("This is my first NFT game!");
     
     alienBoss = AlienBoss({
-      name: 'ProtoZoid',
-      imageURI: 'https://i.pinimg.com/originals/b8/46/26/b846268133d5199992531d5a0885d398.jpg',
-      hp: 300,
-      maxHP: 300,
-      attackDamage: 120
-    })
+      name: bossName,
+      imageURI: bossImageURI,
+      hp: bossHp,
+      maxHp: bossHp,
+      attackDamage: bossAttackDmg
+    });
     
-    console.log("[+] Created a Alien Boss!");
+    console.log("[+] Created a Alien Boss %s w/ HP: %s, Img: %s", alienBoss.name, alienBoss.hp, alienBoss.imageURI);
     
     for (uint i = 0; i < shipNames.length; i += 1){
       defaultShips.push(ShipAttributes({
