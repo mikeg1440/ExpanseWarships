@@ -138,6 +138,34 @@ contract ExpanseWarShips is ERC721 {
     
     console.log("[+] The %s is attacking the %s, with HP: %s and AD: %s", playerShip.name, alienBoss.name, playerShip.hp, playerShip.attackDamage);
     console.log("[+] The %s has HP: %s and AD: %s", alienBoss.name, alienBoss.hp, alienBoss.attackDamage);
+
+    require(
+      playerShip.hp > 0,
+      "[-] Error: The character is dead!  Must have HP to attack boss!"
+    );
+
+    require(
+      alienBoss.hp > 0,
+      "[-] Error: The alien boss is dead! Must have HP to attack player!"
+    );
+
+    // Allow player to attack and check to make sure we can attack the boss & set hp to 0 if attack is greater than boss hp
+    if (alienBoss.hp < playerShip.attackDamage) {
+      alienBoss.hp = 0;
+    } else {
+      alienBoss.hp -= playerShip.attackDamage;
+    }
+
+    // Allow boss to attack and check to make sure the boss can attack player & set hp to 0 if boss attack is greater than player hp
+    if (playerShip.hp < alienBoss.attackDamage) {
+      playerShip.hp = 0;
+    } else {
+      playerShip.hp -= alienBoss.attackDamage;
+    }
+
+    console.log("[+] The %s attacked the %s.  %s's HP: %s", playerShip.name, alienBoss.name, alienBoss.name, alienBoss.hp);
+    console.log("[+] The %s attacked the %s.  %s's HP: %s", alienBoss.name, playerShip.name, playerShip.name, playerShip.hp);
+
   }
   
 }
