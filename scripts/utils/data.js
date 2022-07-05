@@ -7,7 +7,23 @@ const shipsData = [
     "https://static.wikia.nocookie.net/expanse/images/8/8b/MCRN_Donnager_Render.jpg/revision/latest/top-crop/width/200/height/150?cb=20210614202656"
   ],
   [ 200, 300, 180 ],
-  [ 100, 90, 105 ]
+  [ 100, 90, 105 ],
+  'ProtoZoid',
+  'https://i.pinimg.com/originals/b8/46/26/b846268133d5199992531d5a0885d398.jpg',
+  300,
+  120
 ]
 
 exports.shipsData = shipsData;
+
+
+// shipsData = [
+  // [ Ship Names ],
+  // [ Ship Images ],
+  // [ Ship HP ],,
+  // [ Ship Attack ],
+  // Boss Name,
+  // Boss Image,
+  // Boss HP,
+  // Boss Attack Damage
+// ]
