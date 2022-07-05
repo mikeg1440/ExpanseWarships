@@ -152,6 +152,7 @@ contract ExpanseWarShips is ERC721 {
 
     // Allow player to attack and check to make sure we can attack the boss & set hp to 0 if attack is greater than boss hp
     if (alienBoss.hp < playerShip.attackDamage) {
+      console.log("[+] %s ship has been destroyed!  %s wins!", alienBoss.name, playerShip.name);
       alienBoss.hp = 0;
     } else {
       alienBoss.hp -= playerShip.attackDamage;
@@ -159,6 +160,7 @@ contract ExpanseWarShips is ERC721 {
 
     // Allow boss to attack and check to make sure the boss can attack player & set hp to 0 if boss attack is greater than player hp
     if (playerShip.hp < alienBoss.attackDamage) {
+      console.log("[+] %s ship has been destroyed!  %s wins!", playerShip.name, alienBoss.name);
       playerShip.hp = 0;
     } else {
       playerShip.hp -= alienBoss.attackDamage;
