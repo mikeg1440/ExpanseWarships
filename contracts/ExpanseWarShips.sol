@@ -171,7 +171,7 @@ contract ExpanseWarShips is ERC721 {
     console.log("[+] %s's HP: %s, AD: %s", alienBoss.name, alienBoss.hp, alienBoss.attackDamage);
 
   }
-  
+
   function checkIfUserHasNFT() public view returns (ShipAttributes memory) {
     uint256 nftTokenIdOfPlayer = nftHolders[msg.sender];
     
@@ -183,5 +183,13 @@ contract ExpanseWarShips is ERC721 {
     }
   }
 
+  function getAllDefaultShips() public view returns (ShipAttributes[] memory) {
+    return defaultShips;
+  }
+
+  function getBossShip() public view returns (AlienBoss memory) {
+    return alienBoss;
+  }
+  
 }
 

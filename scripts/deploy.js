@@ -11,8 +11,10 @@ const main = async () => {
   txn = await gameContract.mintShipNFT(2);
   await txn.wait();
   
-  let returnedTokenUri = await gameContract.tokenURI(1);
-  console.log(`[+] Token URI: ${returnedTokenUri}`);
+  // let returnedTokenUri = await gameContract.tokenURI(1);
+  // console.log(`[+] Token URI: ${returnedTokenUri}`);
+
+  console.log("[+] Contract deployed to ", gameContract.address);
   
   txn = await gameContract.attackBoss();
   let resp = await txn.wait();
