@@ -39,6 +39,10 @@ contract ExpanseWarShips is ERC721 {
   mapping(uint256 => ShipAttributes) public nftHolderAttributes;
   
   mapping(address => uint256) public nftHolders;
+
+  event ShipNFTMinted(address sender, uint256 tokenId, uint256 shipIndex);
+  event ShipNFTBurned(address sender, uint256 tokenId, uint256 shipIndex);
+  event AttackComplete(address sender, uint256 newBossHp, uint256 newShipHp);
   
   constructor(
     string[] memory shipNames,
@@ -103,6 +107,8 @@ contract ExpanseWarShips is ERC721 {
     nftHolders[msg.sender] = newItemId;
     
     _tokenIds.increment();
+
+    emit ShipNFTMinted(msg.sender, newItemId, _shipIndex);
   }
   
   
@@ -169,6 +175,8 @@ contract ExpanseWarShips is ERC721 {
     console.log("[+] The %s attacked the %s", playerShip.name, alienBoss.name);
     console.log("[+] %s HP: %s and AD: %s", playerShip.name, playerShip.hp, playerShip.attackDamage);
     console.log("[+] %s's HP: %s, AD: %s", alienBoss.name, alienBoss.hp, alienBoss.attackDamage);
+
+    emit AttackComplete(msg.sender, alienBoss.hp, playerShip.hp);
 
   }
 
