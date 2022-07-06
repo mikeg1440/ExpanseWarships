@@ -172,5 +172,16 @@ contract ExpanseWarShips is ERC721 {
 
   }
   
+  function checkIfUserHasNFT() public view returns (ShipAttributes memory) {
+    uint256 nftTokenIdOfPlayer = nftHolders[msg.sender];
+    
+    if (nftTokenIdOfPlayer > 0){
+      return nftHolderAttributes[nftTokenIdOfPlayer];
+    }else {
+      ShipAttributes memory emptyShip;
+      return emptyShip;
+    }
+  }
+
 }
 
