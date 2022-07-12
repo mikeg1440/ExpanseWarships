@@ -38,7 +38,6 @@ export default App;
 const AppContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
   flex-direction: column;
   height: 100vh;
 `
@@ -77,3 +76,6 @@ const SubHeader = styled.div`
   font-weight: bold;
 `
 // Created a styled component for the right ship because we want to orient it the opposite way of the original
+const RightShip = styled.img`
+  transform: rotate(270deg);
+`
