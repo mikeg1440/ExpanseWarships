@@ -42,3 +42,9 @@ const BodyContainer = styled.div`
   height: 100%;
   max-height: 500px;
 `
+
+const SubHeader = styled.div`
+  padding: 1rem;
+  font-weight: bold;
+`
+// Created a styled component for the right ship because we want to orient it the opposite way of the original
