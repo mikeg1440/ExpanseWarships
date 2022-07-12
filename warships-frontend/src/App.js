@@ -27,3 +27,18 @@ const AppHeader = styled.div`
 
 `
 
+const HeaderContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+`
+
+const BodyContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+  max-height: 500px;
+`
