@@ -18,3 +18,12 @@ const AppContainer = styled.div`
   flex-direction: column;
   height: 100vh;
 `
+
+const AppHeader = styled.div`
+  font-size: 2rem;
+  font-weight: bold;
+  color: cyan;
+  padding: 1rem;
+
+`
+
