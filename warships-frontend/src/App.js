@@ -6,7 +6,28 @@ import CardContent from '@mui/material/CardContent';
 function App() {
   return (
     <AppContainer>
-      This is the main app container
+      <Card sx={{ maxHeight: '500px' }}>
+        <CardContent >
+          <HeaderContainer>
+            <img src='https://abs.twimg.com/hashflags/TheExpanse_Emoji/TheExpanse_Emoji.png'/>
+            <AppHeader>Expanse Warships</AppHeader>
+            <RightShip src='https://abs.twimg.com/hashflags/TheExpanse_Emoji/TheExpanse_Emoji.png'/>
+          </HeaderContainer>
+
+          <BodyContainer>
+            
+            <SubHeader>
+              Team up to beat the aliens and other team's ships in the Expanse!
+
+            </SubHeader>
+            
+            <ExpanseGif />
+            
+          </BodyContainer>  
+
+        </CardContent>
+    
+      </Card>      
     </AppContainer>
   );
 }
