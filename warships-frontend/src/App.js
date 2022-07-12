@@ -43,6 +43,11 @@ const BodyContainer = styled.div`
   max-height: 500px;
 `
 
+const ExpanseGif = styled.img`
+  content: url('https://i.kym-cdn.com/photos/images/original/002/357/452/53c.gif');
+  padding: 1rem;
+`
+
 const SubHeader = styled.div`
   padding: 1rem;
   font-weight: bold;
