@@ -5,6 +5,9 @@ import { useEffect, useState } from 'react';
 
 
 function App() {
+
+  const [ account, setAccount ] = useState(null);
+
   const checkIfWalletConnected = async () => {
 
     try {
