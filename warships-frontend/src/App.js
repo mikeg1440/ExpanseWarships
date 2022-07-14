@@ -5,6 +5,30 @@ import { useEffect, useState } from 'react';
 
 
 function App() {
+  const checkIfWalletConnected = async () => {
+
+    try {
+      if (window.ethereum){
+        console.log('[+] MetaMask was detected!');
+  
+        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+  
+        if (accounts.length !== 0){
+          console.log('[+] Authorized Account detected!');
+          setAccount(accounts[0]);
+        }else {
+          console.log('[-] No Authorized Account was detected!');
+        }
+      }else {
+        console.log('[-] MetaMask was not detected!\nPlease install MetaMask and try again.\nhttps://metamask.io/download/');
+      }
+    }catch(error){
+      console.log(`[-] Error Getting Ethereum Object!\nError: ${error}`);
+    }
+
+
+  }
+
   return (
     <AppContainer>
       <Card sx={{ maxHeight: '500px' }}>
