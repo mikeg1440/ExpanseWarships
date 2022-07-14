@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import { useEffect, useState } from 'react';
 
 
 function App() {
