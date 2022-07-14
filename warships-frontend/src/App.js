@@ -32,6 +32,10 @@ function App() {
 
   }
 
+  useEffect(() => {
+    checkIfWalletConnected();
+  }, []);
+
   return (
     <AppContainer>
       <Card sx={{ maxHeight: '500px' }}>
