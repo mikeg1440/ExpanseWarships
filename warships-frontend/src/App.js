@@ -28,8 +28,24 @@ function App() {
     }catch(error){
       console.log(`[-] Error Getting Ethereum Object!\nError: ${error}`);
     }
+  }
 
+  const ConnectWalletAction = async () => {
+    try {
+      const { ethereum } = window;
 
+      if (!ethereum) {
+        alert('MetaMask is not installed. Please install MetaMask and try again.');
+        return;
+      }
+
+      const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+
+      console.log(`[+] Authorized Account detected!\nAccount: ${accounts[0]}`);
+      setAccount(accounts[0]);
+    }catch (error){
+      console.log(`[-] Error Connecting to Wallet!\nError: ${error}`);
+    }
   }
 
   useEffect(() => {
@@ -38,7 +54,7 @@ function App() {
 
   return (
     <AppContainer>
-      <Card sx={{ maxHeight: '500px' }}>
+      <Card sx={{ marginTop: '1rem' }}>
         <CardContent >
           <HeaderContainer>
             <img src='https://abs.twimg.com/hashflags/TheExpanse_Emoji/TheExpanse_Emoji.png'/>
@@ -54,6 +70,10 @@ function App() {
             </SubHeader>
             
             <ExpanseGif />
+
+            <ConnectButton onClick={ConnectWalletAction} >
+              Connect Wallet
+            </ConnectButton>
             
           </BodyContainer>  
 
@@ -95,7 +115,6 @@ const BodyContainer = styled.div`
   align-items: center;
   justify-content: space-around;
   height: 100%;
-  max-height: 500px;
 `
 
 const ExpanseGif = styled.img`
@@ -110,4 +129,16 @@ const SubHeader = styled.div`
 // Created a styled component for the right ship because we want to orient it the opposite way of the original
 const RightShip = styled.img`
   transform: rotate(270deg);
+`
+
+const ConnectButton = styled.button`
+  background-color: #4caf50;
+  border: none; 
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+
 `
