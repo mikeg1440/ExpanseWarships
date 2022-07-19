@@ -70,6 +70,39 @@ function App() {
     }
   }
 
+  const checkNetwork = async () => {
+    try {
+      if (window.ethereum.networkVersion !== '4'){
+        alert('Please connect to the Rinkeby Test Network.');
+      }
+    }catch (error){
+      console.log(`[-] Error Checking Network!\nError: ${error}`);
+    }
+  }
+
+  const fetchNFTMetadata = async () => {
+    if (!account) return;
+
+    console.log(`[+] Checking for Warship NFT on Address: ${account}`);
+
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const gameContract = new ethers.Contract(
+      CONTRACT_ADDRESS,
+      require('../utils/ExpanseWarships.json').abi,
+      signer
+    );
+
+    const txn = await gameContract.checkIfUserHasNFT();
+    if (txn.name){
+      console.log('[+] User has Warship NFT!');
+      setWarshipNFT(transformWarshipData(txn));
+    }else {
+      console.log('[-] User does not have Warship NFT!');
+    }
+
+  }
+
 
   useEffect(() => {
     checkIfWalletConnected();
