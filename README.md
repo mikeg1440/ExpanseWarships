@@ -37,6 +37,7 @@
 
 * [About the Project](#about-the-project)
   * [Built With](#built-with)
+* [Dev Notes](#dev-notes)
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
@@ -55,6 +56,18 @@
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 A mini turn based NFT browser game
 
+## Dev Notes
+
+Any updates to the contract must be followed by deploying the new contract and setting the new address within the front end `constants.js` file found in `warships-frontend/src/utils/`.
+
+You can use the `update_contract.sh` file to do this in one step
+
+Here's the flow of getting our web app connected to our deployed smart contract on the Rinkeby Testnet:
+
+   - Copy latest deployed contract address, paste it in to our web app.
+   - Copy the latest ABI file, paste it into our web app's directory. (Later, we will delve more into what an ABI is).
+   - Import ethers.js to help us talk to our smart contract from the client.
+   - Call a function on our contract to make it do something!
 ### Built With
 
 * [Node](https://nodejs.org/en/)
