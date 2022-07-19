@@ -109,6 +109,10 @@ function App() {
     checkNetwork().then(checkIfWalletConnected())
   }, []);
 
+  useEffect(() => {
+    fetchNFTMetadata();
+  }, [account]);
+
   return (
     <AppContainer>
       <Card sx={{ marginTop: '1rem' }}>
