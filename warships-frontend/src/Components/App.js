@@ -105,7 +105,8 @@ function App() {
 
 
   useEffect(() => {
-    checkIfWalletConnected();
+    // checkIfWalletConnected();
+    checkNetwork().then(checkIfWalletConnected())
   }, []);
 
   return (
