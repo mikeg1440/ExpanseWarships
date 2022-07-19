@@ -4,14 +4,14 @@ import CardContent from '@mui/material/CardContent';
 import { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
 
-import SelectCharacter from './SelectCharacter';
+import SelectWarship from './SelectWarship';
 
-import { CONTRACT_ADDRESS } from './constants';
+import { CONTRACT_ADDRESS } from '../constants';
 
 function App() {
 
   const [ account, setAccount ] = useState(null);
-  const [ characterNFT, setCharacterNFT ] = useState(null);
+  const [ warshipNFT, setWarshipNFT ] = useState(null);
 
   const checkIfWalletConnected = async () => {
 
@@ -63,9 +63,9 @@ function App() {
           </ConnectButton>
         </>
       )
-    }else if (account !== null && !characterNFT ) {
+    }else if (account !== null && !warshipNFT ) {
       return (
-        <SelectCharacter setCharacterNFT={setCharacterNFT} />
+        <SelectWarship setWarshipNFT={setWarshipNFT} />
       )
     }
   }
