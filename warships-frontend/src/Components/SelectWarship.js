@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default function SelectCharacter({ setCharacterNFT }) {
+export default function SelectWarship({ setWarshipNFT }) {
   return (
     <div>Choose your ship wisely!</div>
   )
