@@ -3,10 +3,14 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { useEffect, useState } from 'react';
 
+import SelectCharacter from './SelectCharacter';
+
+import { CONTRACT_ADDRESS } from './constants';
 
 function App() {
 
   const [ account, setAccount ] = useState(null);
+  const [ characterNFT, setCharacterNFT ] = useState(null);
 
   const checkIfWalletConnected = async () => {
 
@@ -48,6 +52,24 @@ function App() {
     }
   }
 
+  const renderContent = () => {
+
+    if (account === null){
+      return (
+        <>
+          <ConnectButton onClick={ConnectWalletAction}>
+            Connect to Wallet
+          </ConnectButton>
+        </>
+      )
+    }else if (account !== null && !characterNFT ) {
+      return (
+        <SelectCharacter setCharacterNFT={setCharacterNFT} />
+      )
+    }
+  }
+
+
   useEffect(() => {
     checkIfWalletConnected();
   }, []);
@@ -71,9 +93,7 @@ function App() {
             
             <ExpanseGif />
 
-            <ConnectButton onClick={ConnectWalletAction} >
-              Connect Wallet
-            </ConnectButton>
+            {renderContent()}
             
           </BodyContainer>  
 
