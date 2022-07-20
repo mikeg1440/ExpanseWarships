@@ -6,7 +6,7 @@ import { ethers } from 'ethers';
 
 import SelectWarship from './SelectWarship';
 
-import { CONTRACT_ADDRESS } from '../constants';
+import { CONTRACT_ADDRESS, transformWarshipData } from '../constants';
 
 function App() {
 
