@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
 
 import SelectWarship from './SelectWarship';
+import Arena from './Arena';
 
 import { CONTRACT_ADDRESS, transformWarshipData } from '../constants';
 
@@ -66,6 +67,10 @@ function App() {
     }else if (account !== null && !warshipNFT ) {
       return (
         <SelectWarship setWarshipNFT={setWarshipNFT} />
+      )
+    }else if ( account && warshipNFT ){
+      return(
+        <Arena warshipNFT={warshipNFT} />
       )
     }
   }
