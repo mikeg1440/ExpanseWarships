@@ -12,6 +12,8 @@ export default function Arena({ warshipNFT }) {
     const [ contract, setContract ] = useState(null);
     const [ bossShip, setBossShip ] = useState(null);
 
+    const runAttackAction = async () => {}
+
     useEffect(() => {
       const { ethereum } = window;
 
@@ -63,9 +65,19 @@ export default function Arena({ warshipNFT }) {
         
             <AttackButton>Attack {bossShip.name}</AttackButton>
 
-            <div>
-                Player
-            </div>
+            {warshipNFT && (
+                <ShipCard>
+                    {warshipNFT.name}
+
+                    <ShipImage src={warshipNFT.imageURI} alt={warshipNFT.name} />
+
+                    <HealthBar>
+                        <progress value={warshipNFT.hp} max={warshipNFT.maxHp} />
+                        <p>{ `${warshipNFT.hp} / ${warshipNFT.maxHp}` }</p> 
+                    </HealthBar>
+
+                </ShipCard>
+            )}
 
         </ArenaContainer>
     )
@@ -118,7 +130,6 @@ const HealthBar = styled.div`
         background-color: #70cb1b;
     }
     p {
-        
         width: 100%;
         font-weight: bold;
         color: black;
@@ -127,11 +138,14 @@ const HealthBar = styled.div`
 `
 
 const AttackButton = styled.button`
-    background-color: #00ff00;
+    background-color: red;
     padding: 1vw;
     width: 25vw;
+    max-width: 200px;
     border: none;
     border-radius: 10px;
     color: white;
-    font-size: 2vw;
+    font-size: 2vh;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
 `
