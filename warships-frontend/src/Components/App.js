@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
 
 import SelectWarship from './SelectWarship';
+import Landing from './Landing';
 import Arena from './Arena';
 
 import { CONTRACT_ADDRESS, transformWarshipData } from '../constants';
@@ -59,6 +60,7 @@ function App() {
     if (account === null){
       return (
         <>
+          <Landing />
           <ConnectButton onClick={ConnectWalletAction}>
             Connect to Wallet
           </ConnectButton>
@@ -66,7 +68,10 @@ function App() {
       )
     }else if (account !== null && !warshipNFT ) {
       return (
-        <SelectWarship setWarshipNFT={setWarshipNFT} />
+        <>
+          <Landing />
+          <SelectWarship setWarshipNFT={setWarshipNFT} />
+        </>
       )
     }else if ( account && warshipNFT ){
       return(
@@ -122,20 +127,10 @@ function App() {
     <AppContainer>
       <CustomCard>
         <CardContent >
-          <HeaderContainer>
-            <img src='https://abs.twimg.com/hashflags/TheExpanse_Emoji/TheExpanse_Emoji.png'/>
-            <AppHeader>Expanse Warships</AppHeader>
-            <RightShip src='https://abs.twimg.com/hashflags/TheExpanse_Emoji/TheExpanse_Emoji.png'/>
-          </HeaderContainer>
+
 
           <BodyContainer>
             
-            <SubHeader>
-              Team up to beat the aliens and other team's ships in the Expanse!
-
-            </SubHeader>
-            
-            <ExpanseGif />
 
             {renderContent()}
             
@@ -158,20 +153,7 @@ const AppContainer = styled.div`
   height: 100vh;
 `
 
-const AppHeader = styled.div`
-  font-size: 2rem;
-  font-weight: bold;
-  color: cyan;
-  padding: 1rem;
 
-`
-
-const HeaderContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 1rem;
-`
 
 const BodyContainer = styled.div`
   display: flex;
@@ -182,7 +164,6 @@ const BodyContainer = styled.div`
 `
 
 const CustomCard = styled(Card)`
-  border: 5px solid cyan;
   margin-top: 1rem;
   max-width: 700px;
   @media (max-width: 600px){
@@ -190,19 +171,6 @@ const CustomCard = styled(Card)`
   }
 `
 
-const ExpanseGif = styled.img`
-  content: url('https://i.kym-cdn.com/photos/images/original/002/357/452/53c.gif');
-  padding: 1rem;
-`
-
-const SubHeader = styled.div`
-  padding: 1rem;
-  font-weight: bold;
-`
-// Created a styled component for the right ship because we want to orient it the opposite way of the original
-const RightShip = styled.img`
-  transform: rotate(270deg);
-`
 
 const ConnectButton = styled.button`
   background-color: #4caf50;
