@@ -48,8 +48,7 @@ export default function Arena({ warshipNFT }) {
     return (
         <ArenaContainer>
             Arena
-            <div>
-                {bossShip && (
+            {bossShip && (
                     <ShipCard>
                         {bossShip.name}
 
@@ -60,8 +59,9 @@ export default function Arena({ warshipNFT }) {
                             <p>{ `${bossShip.hp} / ${bossShip.maxHp}` }</p>
                         </HealthBar>
                     </ShipCard>
-                )}
-            </div>
+            )}
+        
+            <AttackButton>Attack {bossShip.name}</AttackButton>
 
             <div>
                 Player
@@ -124,4 +124,14 @@ const HealthBar = styled.div`
         color: black;
         bottom: -10px;
     }
+`
+
+const AttackButton = styled.button`
+    background-color: #00ff00;
+    padding: 1vw;
+    width: 25vw;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 2vw;
 `
