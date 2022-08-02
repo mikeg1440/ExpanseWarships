@@ -91,6 +91,12 @@ const ShipCard = styled(Card)`
 
 const ShipImage = styled.img`
     max-width: 450px;
+    @media (max-width: 768px) {
+        max-width: 400px;
+    }
+    @media (max-width: 480px) {
+        max-width: 200px;   
+    }
 `
 
 const HealthBar = styled.div`

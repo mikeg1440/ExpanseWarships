@@ -165,10 +165,7 @@ const BodyContainer = styled.div`
 
 const CustomCard = styled(Card)`
   margin-top: 1rem;
-  max-width: 700px;
-  @media (max-width: 600px){
-    width: 80%;
-  }
+  max-width: 800px;
 `
 
 
