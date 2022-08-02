@@ -14,6 +14,7 @@ export default function SelectWarship({ setWarshipNFT }) {
   const mintWarshipNFTAction = async (warshipId) => {
     try {
       if (contract) {
+        console.log(`[+] Minting Warship NFT in progress...`);
         const tx = await contract.mintShipNFT(warshipId);
         await tx.wait();
         
@@ -63,12 +64,12 @@ export default function SelectWarship({ setWarshipNFT }) {
 
     const onWarshipMint = async (sender, tokenId, warshipId) => {
       console.log(`[+] Received Warship NFT mint event!\nSender: ${sender}\nTokenId: ${tokenId}\nWarshipId: ${warshipId}`);
-      alert(`You just minted a Warship NFT!`);
+      alert(`You just minted a Warship NFT!\nSee it Here: https://testnets.opensea.io/assets/${CONTRACT_ADDRESS}/${tokenId.toNumber()}`);
 
       if (contract){
         const warshipNFT = await contract.checkIfUserHasNFT();
-        console.log(`[+] User has Warship NFTs`, warshipNFT);
-        setWarshipNFT(warshipNFT);
+        console.log('[+] User has Warship NFTs', warshipNFT);
+        setWarshipNFT(transformWarshipData(warshipNFT));
       }
     }
 
