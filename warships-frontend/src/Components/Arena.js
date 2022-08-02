@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { ethers } from 'ethers';
 
-import { CONTRACT_ADDRESS } from '../constants';
+import { CONTRACT_ADDRESS, transformWarshipData } from '../constants';
 import ExpanseWarships from '../utils/ExpanseWarships.json';
 
 
 export default function Arena({ warshipNFT }) {
     const [ contract, setContract ] = useState(null);
+    const [ bossShip, setBossShip ] = useState(null);
 
     useEffect(() => {
       const { ethereum } = window;
@@ -28,6 +29,20 @@ export default function Arena({ warshipNFT }) {
 
     }, []);
     
+    useEffect(() => {
+      const fetchBoss = async () => {
+        const bossTx = await contract.getBossShip();
+        console.log('[+] Boss tx: ', bossTx);
+        setBossShip(transformWarshipData(bossTx))
+      }
+
+      if (contract){
+        fetchBoss();
+      }
+    
+    }, [contract])
+    
+
     return (
         <ArenaContainer>
             Arena
