@@ -115,7 +115,7 @@ function App() {
 
   return (
     <AppContainer>
-      <Card sx={{ marginTop: '1rem' }}>
+      <CustomCard>
         <CardContent >
           <HeaderContainer>
             <img src='https://abs.twimg.com/hashflags/TheExpanse_Emoji/TheExpanse_Emoji.png'/>
@@ -138,7 +138,7 @@ function App() {
 
         </CardContent>
     
-      </Card>      
+      </CustomCard>      
     </AppContainer>
   );
 }
@@ -174,6 +174,15 @@ const BodyContainer = styled.div`
   align-items: center;
   justify-content: space-around;
   height: 100%;
+`
+
+const CustomCard = styled(Card)`
+  border: 5px solid cyan;
+  margin-top: 1rem;
+  max-width: 700px;
+  @media (max-width: 600px){
+    width: 80%;
+  }
 `
 
 const ExpanseGif = styled.img`
