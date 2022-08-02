@@ -27,3 +27,8 @@ exports.shipsData = shipsData;
   // Boss HP,
   // Boss Attack Damage
 // ]
+
+
+
+// "https://steamuserimages-a.akamaihd.net/ugc/787478494829796380/B669F75A7CF0DF8788D6A6D352849C6E55C8F86A/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false",
+// "https://preview.redd.it/vnof5a2zcgi61.jpg?auto=webp&s=5cd38ee1bdccc948f851d22d2bdeb0d608d8079d",
