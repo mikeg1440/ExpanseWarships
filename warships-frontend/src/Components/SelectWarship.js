@@ -11,6 +11,19 @@ export default function SelectWarship({ setWarshipNFT }) {
   const [ warships, setWarships ] = useState([]);
   const [ contract, setContract ] = useState(null);
 
+  const mintWarshipNFTAction = async (warshipId) => {
+    try {
+      if (contract) {
+        const tx = await contract.mintShipNFT(warshipId);
+        await tx.wait();
+        
+        console.log(`[+] Successfully minted Warship NFT with id ${warshipId}\nTxnHash: ${tx.hash}`);
+      }
+    }catch(error){
+      console.warn(`[-] Error minting Warship NFT!\nError: ${error}`);
+    }
+  };
+
   useEffect(() => {
     const { ethereum } = window;
 
