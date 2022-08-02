@@ -11,6 +11,19 @@ export default function SelectWarship({ setWarshipNFT }) {
   const [ warships, setWarships ] = useState([]);
   const [ contract, setContract ] = useState(null);
 
+  const mintWarshipNFTAction = async (warshipId) => {
+    try {
+      if (contract) {
+        const tx = await contract.mintShipNFT(warshipId);
+        await tx.wait();
+        
+        console.log(`[+] Successfully minted Warship NFT with id ${warshipId}\nTxnHash: ${tx.hash}`);
+      }
+    }catch(error){
+      console.warn(`[-] Error minting Warship NFT!\nError: ${error}`);
+    }
+  };
+
   useEffect(() => {
     const { ethereum } = window;
 
@@ -38,11 +51,6 @@ export default function SelectWarship({ setWarshipNFT }) {
         const warshipsTxn = await contract.getAllDefaultShips();
         console.info(`[+] warshipsTxn: ${warshipsTxn}`);
 
-        // // transform data to be used in the UI
-        // const warships = warshipsTxn.map((warshipData) => {
-        //   return transformWarshipData(warshipData);
-        // });
-
         // transform data to be used in the UI
         const warships = warshipsTxn.map((warshipData) => transformWarshipData(warshipData));
 
@@ -50,6 +58,17 @@ export default function SelectWarship({ setWarshipNFT }) {
         setWarships(warships);
       } catch(error){
         console.log(`[-] Error fetching Warships!\n Error: ${error}`);
+      }
+    }
+
+    const onWarshipMint = async (sender, tokenId, warshipId) => {
+      console.log(`[+] Received Warship NFT mint event!\nSender: ${sender}\nTokenId: ${tokenId}\nWarshipId: ${warshipId}`);
+      alert(`You just minted a Warship NFT!`);
+
+      if (contract){
+        const warshipNFT = await contract.checkIfUserHasNFT();
+        console.log(`[+] User has Warship NFTs`, warshipNFT);
+        setWarshipNFT(warshipNFT);
       }
     }
 
@@ -72,7 +91,7 @@ export default function SelectWarship({ setWarshipNFT }) {
 
       <ShipImage src={warship.imageURI} />
 
-      <MintButton onClick={() => alert('mintWarshipNFTAction(index)')} >{`Mint ${warship.name}`}</MintButton>
+      <MintButton onClick={() => mintWarshipNFTAction(index)} >{`Mint ${warship.name}`}</MintButton>
     </ShipItem>
   ));
 
