@@ -11,8 +11,27 @@ import ExpanseWarships from '../utils/ExpanseWarships.json';
 export default function Arena({ warshipNFT }) {
     const [ contract, setContract ] = useState(null);
     const [ bossShip, setBossShip ] = useState(null);
+    const [ attackState, setAttackState ] = useState('');
 
-    const runAttackAction = async () => {}
+    const runAttackAction = async () => {
+        try {
+            if (contract){
+                setAttackState('attacking');
+                console.log('[+] Player attacking boss ship... ');
+                const attackTx = await contract.attackBoss();
+                await attackTx.wait();
+
+                console.log('AttackTx: ', attackTx);
+                setAttackState('hit');
+            }
+            
+        } catch (error) {
+            console.log('[-] Error running attack action!\nError: ', error);
+            setAttackState('');
+        }
+            
+        }
+    }
 
     useEffect(() => {
       const { ethereum } = window;
