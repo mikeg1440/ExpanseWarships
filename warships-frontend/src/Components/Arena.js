@@ -97,7 +97,9 @@ export default function Arena({ warshipNFT, setWarshipNFT }) {
 
     return (
         <ArenaContainer>
-            Arena
+            <AppHeader>
+                Arena
+            </AppHeader>
             {!!bossShip && (
                 <>
                     <ShipCard className={attackState}>
@@ -163,12 +165,10 @@ const ArenaContainer = styled.div`
     flex-direction: column;
     align-items: center;
     .attacking {
-        border: 3px solid yellow;
         animation: ${shakeAnimation} 1.2s cubic-bezier(0.36, 0.07, 0.19, 0.97) both infinite;
         transform: translate3d(0, 0, 0);
     }
     .hit {
-        border: 3px solid red;
         animation: ${hitBounceAnimation} 1s ease;
     }
 
@@ -237,4 +237,11 @@ const AttackButton = styled.button`
         cursor: pointer;
         filter: brightness(1.3);
     }
+`
+
+const AppHeader = styled.div`
+  font-size: 2rem;
+  font-weight: bold;
+  color: cyan;
+  padding: 1rem;
 `
