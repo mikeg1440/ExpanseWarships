@@ -59,8 +59,38 @@ export default function Arena({ warshipNFT }) {
         setBossShip(transformWarshipData(bossTx))
       }
 
+      const onAttackComplete = (from, newBossHp, newPlayerHp) => {
+        const bossHp = newBossHp.toNumber();
+        const playerHp = newPlayerHp.toNumber();
+        const sender = from.toString();
+
+        console.log(`[+] Attack Complete!\nBoss HP: ${bossHp}\nPlayer HP: ${playerHp}\nSender: ${sender}`);
+
+        if (warshipNFT === sender.toLowerCase()){
+            
+            setBossShip((prevState) => {
+                return { ...prevState, hp: bossHp }
+            });
+
+            setWarshipNFT((prevState) => {
+                return { ...prevState, hp: playerHp }
+            });
+        } else {
+            setBossShip((prevState) => {
+                return { ...prevState, hp: bossHp }
+            });
+        }
+      }
+
       if (contract){
         fetchBoss();
+        contract.on('AttackComplete', onAttackComplete);
+      }
+
+      return () => { 
+        if (contract){
+          contract.off('AttackComplete', onAttackComplete);
+        }
       }
     
     }, [contract])
