@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { ethers } from 'ethers';
 
 import Card from '@mui/material/Card';
@@ -132,6 +132,25 @@ export default function Arena({ warshipNFT }) {
     )
 }
 
+const shakeAnimation = keyframes`
+    10%,
+    90% { transform: translate3d(-1px, 0, 0);}
+    20%,
+    90% { transform: translate3d(2px, 0, 0);}
+    30%,
+    50%,
+    70% { transform: translate3d(-4px, 0, 0);}
+    40%,
+    60% { transform: translate3d(4px, 0, 0);}
+    `
+
+const hitBounceAnimation = keyframes`
+    0% { transform: scale(1) translateY(0); }
+    10% { transform: scale(1.2) translateY(0.6); }
+    30% { transform: scale(.8, 1.1) translateY(-10px); }
+    50% { transform: scale(1) translateY(0); }
+    100% { transform: translateY(0); }
+`
 
 const ArenaContainer = styled.div`
     display: flex;
