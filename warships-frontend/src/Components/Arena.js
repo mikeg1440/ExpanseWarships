@@ -8,7 +8,7 @@ import { CONTRACT_ADDRESS, transformWarshipData } from '../constants';
 import ExpanseWarships from '../utils/ExpanseWarships.json';
 
 
-export default function Arena({ warshipNFT }) {
+export default function Arena({ warshipNFT, setWarshipNFT }) {
     const [ contract, setContract ] = useState(null);
     const [ bossShip, setBossShip ] = useState(null);
     const [ attackState, setAttackState ] = useState('');
@@ -30,7 +30,6 @@ export default function Arena({ warshipNFT }) {
             setAttackState('');
         }
             
-        }
     }
 
     useEffect(() => {
@@ -99,8 +98,9 @@ export default function Arena({ warshipNFT }) {
     return (
         <ArenaContainer>
             Arena
-            {bossShip && (
-                    <ShipCard>
+            {!!bossShip && (
+                <>
+                    <ShipCard className={attackState}>
                         {bossShip.name}
 
                         <ShipImage src={bossShip.imageURI} alt={bossShip.name} />
@@ -110,9 +110,15 @@ export default function Arena({ warshipNFT }) {
                             <p>{ `${bossShip.hp} / ${bossShip.maxHp}` }</p>
                         </HealthBar>
                     </ShipCard>
+                    <AttackButton 
+                        onClick={runAttackAction}
+                        disabled={attackState === 'attacking'}
+                        >
+                            Attack {bossShip.name}
+                    </AttackButton>
+                </>
             )}
         
-            <AttackButton>Attack {bossShip.name}</AttackButton>
 
             {warshipNFT && (
                 <ShipCard>
@@ -156,6 +162,16 @@ const ArenaContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    .attacking {
+        border: 3px solid yellow;
+        animation: ${shakeAnimation} 1.2s cubic-bezier(0.36, 0.07, 0.19, 0.97) both infinite;
+        transform: translate3d(0, 0, 0);
+    }
+    .hit {
+        border: 3px solid red;
+        animation: ${hitBounceAnimation} 1s ease;
+    }
+
 `
 const ShipCard = styled(Card)`
     display: flex;  
@@ -167,6 +183,7 @@ const ShipCard = styled(Card)`
     * {
         margin-top: .5rem;
     }
+
 `
 
 const ShipImage = styled.img`
@@ -206,7 +223,7 @@ const HealthBar = styled.div`
 `
 
 const AttackButton = styled.button`
-    background-color: red;
+    background-color: rgb(0, 108, 204);
     padding: 1vw;
     width: 25vw;
     max-width: 200px;
@@ -216,4 +233,8 @@ const AttackButton = styled.button`
     font-size: 2vh;
     margin-top: 1vw;
     margin-bottom: 1vw;
+    :hover {
+        cursor: pointer;
+        filter: brightness(1.3);
+    }
 `

@@ -75,7 +75,7 @@ function App() {
       )
     }else if ( account && warshipNFT ){
       return(
-        <Arena warshipNFT={warshipNFT} />
+        <Arena warshipNFT={warshipNFT} setWarshipNFT={setWarshipNFT} />
       )
     }
   }
