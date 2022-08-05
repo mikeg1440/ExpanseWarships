@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { ethers } from 'ethers';
+import ReactLoading from 'react-loading';
 
 import { CONTRACT_ADDRESS, transformWarshipData } from '../constants';
 
@@ -10,18 +11,22 @@ export default function SelectWarship({ setWarshipNFT }) {
 
   const [ warships, setWarships ] = useState([]);
   const [ contract, setContract ] = useState(null);
+  const [ mintingInProgress, setMintingInProgress ] = useState(false);
 
   const mintWarshipNFTAction = async (warshipId) => {
     try {
       if (contract) {
+        setMintingInProgress(true);
         console.log(`[+] Minting Warship NFT in progress...`);
         const tx = await contract.mintShipNFT(warshipId);
         await tx.wait();
         
+        setMintingInProgress(false);
         console.log(`[+] Successfully minted Warship NFT with id ${warshipId}\nTxnHash: ${tx.hash}`);
       }
     }catch(error){
       console.warn(`[-] Error minting Warship NFT!\nError: ${error}`);
+      setMintingInProgress(false);
     }
   };
 
