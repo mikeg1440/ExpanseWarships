@@ -37,6 +37,8 @@ function App() {
     }catch(error){
       console.log(`[-] Error Getting Ethereum Object!\nError: ${error}`);
     }
+
+    setIsLoading(false);
   }
 
   const ConnectWalletAction = async () => {
