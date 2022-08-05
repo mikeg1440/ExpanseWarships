@@ -35,6 +35,7 @@ export default function Arena({ warshipNFT, setWarshipNFT }) {
             
         } catch (error) {
             console.log('[-] Error running attack action!\nError: ', error);
+            alert("Attack failed, there seems to be a issue.");
             setAttackState('');
         }
             
@@ -72,7 +73,8 @@ export default function Arena({ warshipNFT, setWarshipNFT }) {
         const sender = from.toString();
 
         console.log(`[+] Attack Complete!\nBoss HP: ${bossHp}\nPlayer HP: ${playerHp}\nSender: ${sender}`);
-
+        alert(`Attack against ${bossShip.name} successful!`);
+        
         if (warshipNFT === sender.toLowerCase()){
             
             setBossShip((prevState) => {
@@ -124,7 +126,7 @@ export default function Arena({ warshipNFT, setWarshipNFT }) {
                         onClick={runAttackAction}
                         disabled={attackState === 'attacking'}
                         >
-                            Attack {bossShip.name}
+                            {attackState === 'attacking' ? 'Attacking..' : `Attack ${bossShip.name}`}
                     </AttackButton>
                 </>
             )}
