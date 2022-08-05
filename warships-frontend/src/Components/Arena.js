@@ -14,6 +14,14 @@ export default function Arena({ warshipNFT, setWarshipNFT }) {
     const [ attackState, setAttackState ] = useState('');
 
     const runAttackAction = async () => {
+        if (warshipNFT.hp <= 0){
+            alert('You cant attack, your ship is destroyed!');
+            return;
+        }else if (bossShip.hp <= 0){
+            alert("You can't attack this ship its already destroyed!");
+            return;
+        }
+
         try {
             if (contract){
                 setAttackState('attacking');
