@@ -3,6 +3,8 @@ import styled, { keyframes } from 'styled-components';
 import { ethers } from 'ethers';
 
 import Card from '@mui/material/Card';
+import Alert from '@mui/material/Alert';
+import ReactLoading from 'react-loading';
 
 import { CONTRACT_ADDRESS, transformWarshipData } from '../constants';
 import ExpanseWarships from '../utils/ExpanseWarships.json';
@@ -74,7 +76,7 @@ export default function Arena({ warshipNFT, setWarshipNFT }) {
 
         console.log(`[+] Attack Complete!\nBoss HP: ${bossHp}\nPlayer HP: ${playerHp}\nSender: ${sender}`);
         alert(`Attack against ${bossShip.name} successful!`);
-        
+
         if (warshipNFT === sender.toLowerCase()){
             
             setBossShip((prevState) => {
@@ -110,6 +112,12 @@ export default function Arena({ warshipNFT, setWarshipNFT }) {
             <AppHeader>
                 Arena
             </AppHeader>
+
+            { bossShip && warshipNFT && (
+                <Alert severity="success">{`${bossShip.name} was hit for ${warshipNFT.attackDamage}!`}</Alert>
+            )}
+
+
             {!!bossShip && (
                 <>
                     <ShipCard className={attackState}>
@@ -128,6 +136,9 @@ export default function Arena({ warshipNFT, setWarshipNFT }) {
                         >
                             {attackState === 'attacking' ? 'Attacking..' : `Attack ${bossShip.name}`}
                     </AttackButton>
+                    {attackState === 'attacking' && (
+                        <ReactLoading type={'bars'} color={'#00cfff'} height={'40px'} width={'40px'} />
+                    )}
                 </>
             )}
         
