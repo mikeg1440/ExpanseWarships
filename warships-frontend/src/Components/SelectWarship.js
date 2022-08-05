@@ -104,18 +104,23 @@ export default function SelectWarship({ setWarshipNFT }) {
   ));
 
   return (
-    <SelectContainer>
-      <div>Choose your ship wisely!</div>
+    <Container>
+      <Container>Choose your ship wisely!</Container>
       <ShipsContainer>
         {warships.length > 0 && renderWarships()}
       </ShipsContainer>
-      {mintingInProgress && <ReactLoading type={'spin'} color={'#fff'} height={'20px'} width={'20px'} />}
-    </SelectContainer>
+      {mintingInProgress && (
+        <Container>
+          Minting...
+          <ReactLoading type={'bars'} color={'#00cfff'} height={'60px'} width={'60px'} />
+        </Container>
+      )}
+    </Container>
 
   )
 }
 
-const SelectContainer = styled.div`
+const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
