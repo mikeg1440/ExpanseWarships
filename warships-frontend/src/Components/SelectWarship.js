@@ -22,10 +22,12 @@ export default function SelectWarship({ setWarshipNFT }) {
         await tx.wait();
         
         setMintingInProgress(false);
+        alert("Warship NFT minted successfully!");
         console.log(`[+] Successfully minted Warship NFT with id ${warshipId}\nTxnHash: ${tx.hash}`);
       }
     }catch(error){
       console.warn(`[-] Error minting Warship NFT!\nError: ${error}`);
+      alert("There was a problem when minting your Warship NFT.\nPlease contact support.");
       setMintingInProgress(false);
     }
   };
@@ -107,6 +109,7 @@ export default function SelectWarship({ setWarshipNFT }) {
       <ShipsContainer>
         {warships.length > 0 && renderWarships()}
       </ShipsContainer>
+      {mintingInProgress && <ReactLoading type={'spin'} color={'#fff'} height={'20px'} width={'20px'} />}
     </SelectContainer>
 
   )
