@@ -3,6 +3,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
+import ReactLoading from 'react-loading';
 
 import SelectWarship from './SelectWarship';
 import Landing from './Landing';
@@ -14,6 +15,7 @@ function App() {
 
   const [ account, setAccount ] = useState(null);
   const [ warshipNFT, setWarshipNFT ] = useState(null);
+  const [ isLoading, setIsLoading ] = useState(false);
 
   const checkIfWalletConnected = async () => {
 
@@ -56,8 +58,15 @@ function App() {
   }
 
   const renderContent = () => {
-
-    if (account === null){
+    if (account !== null && isLoading) {
+      return (
+        <section>
+          <article>
+            <ReactLoading type='spinningBubbles'></ReactLoading>
+          </article>
+        </section>
+      )
+    } else if (account === null){
       return (
         <>
           <Landing />
@@ -111,11 +120,12 @@ function App() {
       console.log('[-] User does not have Warship NFT!');
     }
 
+    setIsLoading(false);
   }
 
 
   useEffect(() => {
-    // checkIfWalletConnected();
+    setIsLoading(true);
     checkNetwork().then(checkIfWalletConnected())
   }, []);
 
