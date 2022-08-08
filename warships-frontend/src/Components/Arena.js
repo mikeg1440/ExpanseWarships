@@ -14,6 +14,7 @@ export default function Arena({ warshipNFT, setWarshipNFT }) {
     const [ contract, setContract ] = useState(null);
     const [ bossShip, setBossShip ] = useState(null);
     const [ attackState, setAttackState ] = useState('');
+    const [ showAlert, setShowAlert ] = useState(false);
 
     const runAttackAction = async () => {
         if (warshipNFT.hp <= 0){
@@ -91,6 +92,10 @@ export default function Arena({ warshipNFT, setWarshipNFT }) {
                 return { ...prevState, hp: bossHp }
             });
         }
+        setShowAlert(true);
+        setTimeout(() => {
+            setShowAlert(false);
+        }, 4000);
       }
 
       if (contract){
@@ -113,13 +118,12 @@ export default function Arena({ warshipNFT, setWarshipNFT }) {
                 Arena
             </AppHeader>
 
-            { bossShip && warshipNFT && (
-                <Alert severity="success">{`${bossShip.name} was hit for ${warshipNFT.attackDamage}!`}</Alert>
-            )}
-
-
             {!!bossShip && (
                 <>
+                    {!!showAlert && (
+                        <Alert severity="success">{`${bossShip.name} was hit for ${warshipNFT.attackDamage}!`}</Alert>
+                    )}
+
                     <ShipCard className={attackState}>
                         {bossShip.name}
 
