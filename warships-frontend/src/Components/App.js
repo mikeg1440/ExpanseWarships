@@ -163,6 +163,12 @@ const AppContainer = styled.div`
   align-items: center;
   flex-direction: column;
   height: 100vh;
+
+  background: url(https://cutewallpaper.org/21/space-gif-background/Backgrounds-For-Html-Gif-Wallpaper-Cave.gif) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 `
 
 
