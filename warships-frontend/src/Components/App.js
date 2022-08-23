@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
 import ReactLoading from 'react-loading';
@@ -137,7 +135,7 @@ function App() {
 
   return (
     <AppContainer>
-      <CustomCard>
+      <Card>
         <CardContent >
 
 
@@ -150,7 +148,7 @@ function App() {
 
         </CardContent>
     
-      </CustomCard>      
+      </Card>      
     </AppContainer>
   );
 }
@@ -164,7 +162,7 @@ const AppContainer = styled.div`
   flex-direction: column;
   height: 100vh;
 
-  background: url(https://cutewallpaper.org/21/space-gif-background/Backgrounds-For-Html-Gif-Wallpaper-Cave.gif) no-repeat center center fixed;
+  background: url(space.gif) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -181,9 +179,23 @@ const BodyContainer = styled.div`
   height: 100%;
 `
 
-const CustomCard = styled(Card)`
-  margin-top: 1rem;
+const Card = styled.div`
+  border-radius: 10px;
+  margin-top: 2rem;
   max-width: 800px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: #1d1d1d;
+  color: white;
+  filter: drop-shadow(0px 0px 10px rgba(21, 211, 255, 0.5));
+  @media(max-width: 688px){
+    width: 85%;
+    overflow: hidden;
+  }
+`
+
+const CardContent = styled.div`
+  padding: 16px 16px 24px 16px;
 `
 
 
