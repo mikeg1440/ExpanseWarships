@@ -6,9 +6,9 @@ export default function Landing() {
   return (
     <BodyContainer>
         <HeaderContainer>
-            <img src='https://abs.twimg.com/hashflags/TheExpanse_Emoji/TheExpanse_Emoji.png'/>
+            <img src='TheExpanse_Emoji.png'/>
             <AppHeader>Expanse Warships</AppHeader>
-            <RightShip src='https://abs.twimg.com/hashflags/TheExpanse_Emoji/TheExpanse_Emoji.png'/>
+            <RightShip src='TheExpanse_Emoji.png'/>
         </HeaderContainer>
 
         <SubHeader>
@@ -54,6 +54,10 @@ const RightShip = styled.img`
 `
 
 const ExpanseGif = styled.img`
-  content: url('https://i.kym-cdn.com/photos/images/original/002/357/452/53c.gif');
+  content: url('roci-shooting.gif');
   padding: 1rem;
+  object-fit: contain;
+  @media(max-width: 688px){
+    width: 80%;
+  }
 `
