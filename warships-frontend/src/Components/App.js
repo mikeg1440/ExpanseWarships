@@ -188,7 +188,7 @@ const CustomCard = styled(Card)`
 
 
 const ConnectButton = styled.button`
-  background-color: #4caf50;
+  background-color: rgb(226, 112, 8);
   border: none; 
   color: white;
   padding: 15px 32px;
@@ -196,5 +196,8 @@ const ConnectButton = styled.button`
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-
+  :hover {
+    cursor: pointer;
+    filter: brightness(150%);
+  }
 `
