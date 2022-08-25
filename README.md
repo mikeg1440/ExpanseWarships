@@ -11,7 +11,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/mikeg1440/ExpanseWarships">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="warships-frontend/public/TheExpanse_Emoji.png" alt="Site landing page" width="80" height="80">
   </a>
 
   <h3 align="center">Expanse Warships</h3>
@@ -27,10 +27,9 @@
     <a href="https://github.com/mikeg1440/ExpanseWarships/issues">Report Bug</a>
     ·
     <a href="https://github.com/mikeg1440/ExpanseWarships/issues">Request Feature</a>
+
   </p>
 </p>
-
-
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
@@ -48,12 +47,13 @@
 * [Contact](#contact)
 * [Acknowledgements](#acknowledgements)
 
-
+<div align="center">
+  <img src="https://github.com/mikeg1440/my-files/blob/master/images/ExpanseWarships/LandingCropped.png?raw=true" />
+</div>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 A mini turn based NFT browser game
 
 ## Dev Notes
@@ -175,4 +175,3 @@ Project Link: [https://github.com/mikeg1440/ExpanseWarships](https://github.com/
 [license-url]: https://github.com/mikeg1440/ExpanseWarships/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/
-[product-screenshot]: images/screenshot.png
